@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const replaceLib = require('antd-tools/lib/replaceLib');
+const replaceLib = require('mui-tools/lib/replaceLib');
 
 const useReact = process.env.DEMO_ENV === 'react';
 const isDev = process.env.NODE_ENV === 'development';
@@ -9,7 +9,19 @@ const isDev = process.env.NODE_ENV === 'development';
 function alertBabelConfig(rules) {
   rules.forEach((rule) => {
     if (rule.loader && rule.loader === 'babel-loader') {
-      rule.options.plugins.push(replaceLib);
+      rule.options.plugins.push(...[
+        replaceLib,
+        [
+          require.resolve('babel-plugin-import'),
+          [
+            {
+              libraryName: 'weaver-mobile',
+              libraryDirectory: 'es',
+              style: true
+            }
+          ]
+        ]
+      ]);
     } else if (rule.use) {
       alertBabelConfig(rule.use);
     }
@@ -65,8 +77,8 @@ module.exports = {
     config.plugins.push(new CSSSplitWebpackPlugin({ size: 4000 }));
 
     config.resolve.alias = {
-      // 'antd-mobile/lib': path.join(process.cwd(), 'components'),
-      'antd-mobile/components': path.join(process.cwd(), 'components'),
+      'mmode-ui/lib': path.join(process.cwd(), 'components'),
+      'mmode-ui': process.cwd(),
       site: path.join(process.cwd(), 'site'),
     };
     if (!useReact) {

@@ -1,6 +1,6 @@
 {
-  "name": "antd-mobile",
-  "version": "1.0.0",
+  "name": "mmode-ui",
+  "version": "1.0.1",
   "description": "移动建模组件库",
   "homepage": "",
   "keywords": [
@@ -35,15 +35,17 @@
     "array-tree-filter": "~2.1.0",
     "babel-runtime": "6.x",
     "classnames": "^2.2.1",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "weaver-mobile": "^1.5.7"
   },
   "devDependencies": {
+    "@types/lodash": "4.14.116",
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.36",
-    "@types/react-dom": "^16.0.3",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.6",
     "antd": "3.x",
     "antd-mobile-demo-data": "^0.3.0",
-    "antd-tools": "^5.2.0",
+    "mui-tools": "^1.0.4",
     "babel-eslint": "^7.2.3",
     "babel-plugin-import": "^1.6.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -73,10 +75,7 @@
     "jest-spec-reporter": "^1.0.3",
     "jsonml.js": "^0.1.0",
     "lesshint": "^4.0.2",
-    "lint-staged": "^7.0.0",
-    "lodash.debounce": "^4.0.6",
     "mockdate": "^2.0.1",
-    "pre-commit": "1.x",
     "preact": "~8.2.6",
     "preact-compat": "3.18.0",
     "qrcode.react": "^0.7.1",
@@ -91,53 +90,19 @@
     "react-sticky": "^6.0.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "typescript": "~3.4.0"
+    "typescript": "^3.6.2"
   },
   "scripts": {
-    "lint": "npm run tslint && npm run srclint && npm run demolint && npm run stylelint",
-    "srclint": "eslint site scripts --ext '.js,.jsx'",
-    "tslint": "npm run tsc && antd-tools run ts-lint",
-    "tslint-fix": "antd-tools run ts-lint-fix && npm run compile && rm -rf lib",
-    "demolint": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
-    "stylelint": "stylelint \"{site,components}/**/*.less\" --syntax less",
-    "stylelint-fix": "stylelint \"{site,components}/**/*.less\" --syntax less --fix",
-    "eslint-fix": "eslint --fix site scripts ./*.js --ext '.js,.jsx' && eslint-tinker ./components/*/demo/*.md",
-    "pre-publish": "npm run test:all && node ./scripts/build-less-entry",
-    "prepublish": "antd-tools run guard",
-    "prepare": "antd-tools run guard",
-    "prepublishOnly": "antd-tools run guard",
+    "prepublish": "mui-tools run guard",
+    "prepare": "mui-tools run guard",
+    "prepublishOnly": "mui-tools run guard",
     "test": "jest --config .jest.js",
     "test:all": "./scripts/test-all.sh",
-    "dist": "cross-env BABEL_ENV=dist antd-tools run dist",
-    "compile": "cross-env BABEL_ENV=dist antd-tools run compile",
-    "watch-tsc": "antd-tools run watch-tsc",
-    "clean": "antd-tools run clean",
+    "dist": "cross-env BABEL_ENV=dist mui-tools run dist",
+    "compile": "mui-tools run compile",
+    "clean": "mui-tools run clean",
     "start": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
-    "start-hd": "cross-env NODE_ENV=development concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react HD_ENV=hd bisheng start -c ./site/bisheng.kitchen.config.js\"",
-    "start-prod": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng start -c ./site/bisheng.kitchen.config.js\"",
-    "site": "cross-env NODE_ENV=production concurrently \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.desktop.config.js\" \"cross-env DEMO_ENV=react bisheng build -c ./site/bisheng.kitchen.config.js\"",
-    "deploy": "npm run clean && npm run site && cp CNAME _site && bisheng gh-pages --push-only",
-    "pub": "cross-env BABEL_ENV=dist antd-tools run pub --skip-tag",
-    "lint-staged": "lint-staged",
-    "lint-staged:ts": "npm run tsc && node node_modules/tslint/bin/tslint -c node_modules/antd-tools/lib/tslint.json components/**/*.tsx",
-    "lint-staged:es": "eslint ./.eslintrc.js ./webpack.config.js",
-    "lint-staged:demo": "cross-env RUN_ENV=DEMO eslint --ext '.md'",
-    "tsc": "antd-tools run tsc"
+    "pub": "cross-env BABEL_ENV=dist mui-tools run pub  --skip-tag",
   },
-  "lint-staged": {
-    "components/**/*.tsx": [
-      "npm run lint-staged:ts"
-    ],
-    "{tests,site,scripts,components}/**/*.{js,jsx}": [
-      "npm run lint-staged:es"
-    ],
-    "{site,components}/**/*.less": "stylelint --syntax less",
-    "components/*/demo/*.md": [
-      "npm run lint-staged:demo"
-    ]
-  },
-  "typings": "lib/index.d.ts",
-  "pre-commit": [
-    "lint-staged"
-  ]
+  "typings": "lib/index.d.ts"
 }

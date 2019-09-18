@@ -26,10 +26,3 @@ declare module 'rmc-pull-to-refresh';
 declare module 'rc-slider/lib/Range';
 declare module 'rc-slider/lib/Slider';
 declare module 'rmc-steps';
-
-// declare var process: {
-//   env: {
-//     NODE_ENV: string;
-//     DISABLE_ANTD_MOBILE_UPGRADE: string;
-//   };
-// };

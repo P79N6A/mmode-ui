@@ -7,7 +7,7 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports":true,
     "target": "es6",
-    "noImplicitAny": true
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

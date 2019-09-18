@@ -1,0 +1,16 @@
+.size(@width; @height) {
+  width: @width;
+  height: @height;
+}
+
+.square(@size) {
+  .size(@size; @size);
+}
+
+@rem: ~`rem = function (...args) {
+  return args.map(function (size) {
+    if (0 === size) return 0;
+    
+    return (size / 16) + 'rem';
+  }).join(' ');
+}`;

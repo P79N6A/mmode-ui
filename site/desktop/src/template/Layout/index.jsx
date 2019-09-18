@@ -1,13 +1,12 @@
-import React, { cloneElement } from 'react';
+import { BackTop } from 'antd';
 import PropTypes from 'prop-types';
+import React, { cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import { addLocaleData, IntlProvider } from 'react-intl';
-import { BackTop, Tooltip } from 'antd';
-import Header from './Header';
-import Footer from './Footer';
+import * as utils from '../../../../utils';
 import enLocale from '../../en-US';
 import cnLocale from '../../zh-CN';
-import * as utils from '../../../../utils';
+import Header from './Header';
 
 if (typeof window !== 'undefined') {
   /* eslint-disable global-require */
@@ -35,6 +34,8 @@ export default class Layout extends React.Component {
   }
 
   componentDidMount() {
+    this.context.router.push('/docs/react/introduce-cn');
+
     if (typeof window.ga !== 'undefined') {
       this.context.router.listen((loc) => {
         window.ga('send', 'pageview', loc.pathname + loc.search);
@@ -66,10 +67,7 @@ export default class Layout extends React.Component {
         <div className="page-wrapper">
           <Header {...restProps} isFirstScreen={isFirstScreen} />
           {cloneElement(children, { isFirstScreen, onEnterChange: this.onEnterChange })}
-          <Footer {...restProps} />
-          <Tooltip title={() => <p><a style={{ color: '#ffc600', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer" href="https://www.yuque.com/yuanfei.gyf/public/dv2z7r">欢迎加入 Ant Design Mobile <span aria-label="Smile" role="img">😊</span>&gt;&gt;</a></p>}>
-            <BackTop />
-          </Tooltip>
+          <BackTop />
         </div>
       </IntlProvider>
     );

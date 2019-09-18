@@ -4,7 +4,6 @@ module.exports = {
   locale: 'en-US',
   data: appLocaleData,
   messages: {
-    'app.site.title': 'Ant Design Mobile',
-    'app.site.subTitle': 'Mobile Components By Ant UED',
+    'app.site.title': 'MMode UI Mobile',
   },
 };

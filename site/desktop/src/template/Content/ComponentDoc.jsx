@@ -130,7 +130,7 @@ export default class ComponentDoc extends React.Component {
     });
 
     return (
-      <DocumentTitle title={`${subtitle || chinese || ''} ${title || english} - Ant Design`}>
+      <DocumentTitle title={`${subtitle || chinese || ''} ${title || english}`}>
         <article>
           <section className="markdown">
             <h1 className="section-title">
@@ -175,7 +175,7 @@ export default class ComponentDoc extends React.Component {
                               <section className="code-box-demo code-box-demo-preview">
                                 <iframe id="demoFrame"
                                   name="demoFrame"
-                                  title="antd-mobile"
+                                  title="mmode-ui"
                                   style={{
                                     width: '377Px',
                                     height: '548Px',

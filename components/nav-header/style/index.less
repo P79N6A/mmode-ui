@@ -1,0 +1,50 @@
+@import '../../style/index';
+
+@navheader-prefix-cls: ~'@{prefix}-nav-header';
+
+
+@padding-b: ~`rem(10)`;
+@padding-t: ~`rem(15)`;
+@padding-l: @padding-t;
+
+.@{navheader-prefix-cls} {
+  position: relative;
+  padding: @padding-t 0 @padding-b @padding-l;
+  background: #fff;
+  font-size: @font-size-lg;
+  line-height: 1.4;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: ~`rem(5)`;
+    background-color: var(--themeColor);
+    top: @padding-t;
+    left: 0;
+    bottom: @padding-b;
+  }
+  &-title {
+    color: @theme-color;
+    line-height: 1.3;
+  }
+  &-subtitle {
+    font-size: ~`rem(9)`;
+    color: @text-color-9;
+  }
+  &-right {
+    .vertical-center();
+    right: ~`rem(8)`;
+    line-height: 1;
+  }
+  &-button {
+    margin-right: ~`rem(5)`;
+    &:last-child { margin-right: 0}
+
+    img { 
+      height: ~`rem(30)`;
+      padding: ~`rem(2)`;
+      box-sizing: border-box;
+      vertical-align: bottom;
+    }
+  }
+}

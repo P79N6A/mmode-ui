@@ -9,9 +9,9 @@ if (
 ) {
   // tslint:disable-next-line:no-console
   console.warn(
-    'You are using a whole package of antd-mobile, ' +
+    'You are using a whole package of mmode-ui, ' +
       'please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.',
   );
 }
 
-export { default as WingBlank } from './wing-blank/index';
+export { default as NavHeader } from './nav-header/index';

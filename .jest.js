@@ -24,9 +24,9 @@ module.exports = {
     'site'
   ],
   transform: {
-    '\\.tsx?$': './node_modules/antd-tools/lib/jest/codePreprocessor',
-    '\\.js$': './node_modules/antd-tools/lib/jest/codePreprocessor',
-    '\\.md$': './node_modules/antd-tools/lib/jest/demoPreprocessor',
+    '\\.tsx?$': './node_modules/mui-tools/lib/jest/codePreprocessor',
+    '\\.js$': './node_modules/mui-tools/lib/jest/codePreprocessor',
+    '\\.md$': './node_modules/mui-tools/lib/jest/demoPreprocessor',
   },
   testRegex: libDir === 'dist' ? 'demo\\.test\\.js$' : '.*\\.test\\.js$',
   collectCoverageFrom: [

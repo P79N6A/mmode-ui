@@ -106,7 +106,7 @@ export default class Demo extends React.Component {
       .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'antd-mobile';/, 'const { $1 } = window["antd-mobile"];');
 
     const codepenPrefillConfig = {
-      title: `${localizedTitle} - Ant Design Mobile Demo`,
+      title: `${localizedTitle} - Mobile Mode UI Demo`,
       html: `<div id="container" style="padding: 24px"></div>
               <script>
                 var mountNode = document.getElementById('container');
@@ -129,7 +129,7 @@ export default class Demo extends React.Component {
       js_pre_processor: 'typescript',
     };
     const riddlePrefillConfig = {
-      title: `${localizedTitle} - Ant Design Mobile Demo`,
+      title: `${localizedTitle} - Mobile Mode UI Demo`,
       js: sourceCode.replace('from \'antd-mobile\'', 'from \'antd-mobile\''),
       css: prefillStyle.replace('\'antd-mobile/', '\'antd-mobile/'),
     };

@@ -1,0 +1,22 @@
+.@{prefix}-button {
+  @h: ~`rem(28)`;
+  @img-h: ~`rem(24)`;
+
+  height: @h;
+  line-height: @h;
+  background: @theme-color;
+  color: #fff;
+  display: inline-block;
+  border-radius: @border-radius-base;
+  padding: ~`rem(0, 10)`;
+  font-size: @font-size-sm;
+  
+  & > img,
+  & > span {
+    display: inline-block;
+    vertical-align: top;
+  }
+  img {
+    .square(@img-sm);
+  }
+}
